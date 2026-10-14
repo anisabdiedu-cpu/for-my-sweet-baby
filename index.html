@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sweet Baby ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,, #FFB6D5, #FFD6E7, #FFF0F5);
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    background: #F8AFCB;
+    max-width: 520px;
+    width: 100%;
+    padding: 35px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 40px #e88BB555;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.cat {
+    font-size: 80px;
+    margin: 20px;
+    display: inline-block;
+    animation: catBounce 2s ease-in-out infinite;
+}
+
+button {
+    border: 2px solid #FFFFFF;
+    padding: 15px 22px;
+    margin: 10px 0;
+    border-radius: 30px;
+    background: #FFFFFF;
+    color: #E879A5;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #d94377;
+}
+
+.message {
+    background: #fff0f5;
+    padding: 20px;
+    border-radius: 18px;
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+.hidden {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    animation: floatUp 7s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes catBounce { 
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+ 50% {
+    transform: translateY(-15px);
+ }
+}
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    20% { opacity: 0.7; }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+  h1, h2, h3, p, .message, label {
+    color: #FFFFFF;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div>💌 A LITTLE SOMETHING FOR BEBO</div>
+
+    <h1>Hey, pretty girl ❤️</h1>
+
+    <p>
+        I heard someone needed a hug...
+        Unfortunately, her boyfriend is experiencing
+        a distance-related technical issue. 🥹
+    </p>
+
+    <div class="cat">🐱💗</div>
+
+    <p>
+        So I made you this little corner of the internet.
+        It doesn't replace a real hug, but I hope it makes
+        you smile until I can give you one myself.
+    </p>
+
+    <button onclick="giveHug()">
+        🫂 GET YOUR HUG
+    </button>
+
+    <div id="hug" class="message hidden">
+        <h2>COME HERE, BABY! 🫂❤️</h2>
+
+        Imagine me pulling you close,
+        wrapping my arms around you,
+        kissing your forehead, and holding you
+        for as long as you need.
+
+        <br><br>
+
+        You don't have to explain anything.
+        You don't have to pretend you're okay.
+        Just rest in my arms for a little while.
+
+        <br><br>
+
+        If I were there right now,
+        I wouldn't be in a hurry to let go. 💗
+
+        <br><br>
+
+        <button onclick="anotherHug()">
+            ONE MORE HUG 🥹
+        </button>
+
+        <p id="extra"></p>
+    </div>
+
+    <hr style="border:0;border-top:1px solid #f5d5e0;margin:30px 0;">
+
+    <h2>A LITTLE LOVE NOTE 💌</h2>
+
+    <p>
+        Whenever you miss me, come back here.
+        This little page will always have something
+        sweet waiting for you.
+    </p>
+
+    <button onclick="loveNote()">
+        OPEN YOUR LOVE NOTE 💗
+    </button>
+
+    <div id="note" class="message hidden">
+        I wish I could be there with you right now.
+        Until then, remember that you're special to me,
+        and I'm sending you the biggest hug through this screen.
+
+        <br><br>
+
+        Your real hug is still waiting for you. ❤️
+    </div>
+
+    <p style="margin-top:30px;font-size:13px;">
+        Made with love, just for you. ❤️
+    </p>
+
+</div>
+
+<script>
+function giveHug() {
+    document.getElementById("hug").classList.remove("hidden");
+    document.getElementById("hug").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    makeHearts();
+}
+
+const extraMessages = [
+    "This hug comes with a forehead kiss. 😚❤️",
+    "Okay, baby, I'm not letting go this time. 🫂",
+    "Sending you another hug because one isn't enough. 💗",
+    "I miss you. Come here. 🥹❤️"
+];
+
+let hugCount = 0;
+
+function anotherHug() {
+    document.getElementById("extra").textContent =
+        extraMessages[hugCount % extraMessages.length];
+
+    hugCount++;
+    makeHearts();
+}
+
+function loveNote() {
+    document.getElementById("note").classList.toggle("hidden");
+    makeHearts();
+}
+
+function makeHearts() {
+    const emojis = ["💗", "❤️", "💕", "✨"];
+
+    for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (16 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 8000);
+    }
+}
+</script>
+
+</body>
+</html>
